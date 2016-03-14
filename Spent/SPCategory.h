@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (double)returnTotal;
 
++ (double)returnCategoryTotal:(int)category;
+
++ (NSString *)returnCategoryName:(int)category;
+
 @end
 
 NS_ASSUME_NONNULL_END

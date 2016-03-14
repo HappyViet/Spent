@@ -16,28 +16,34 @@
 + (void)checkAndCreateBasicEntities{
     NSArray *categories = [SPCategory MR_findAll];
     
-    if(!(categories.count >0)){
-	   SPCategory *newCategory = [SPCategory MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+    if(!(categories.count >3)){
+	   SPCategory *newCategory1 = [SPCategory MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
 	   
-	   [newCategory setId:[NSNumber numberWithInt:1]];
-	   [newCategory setName:@"Food"];
-	   [newCategory setColor:@"#FF0000"];
-	   [newCategory setTotal:[NSNumber numberWithDouble:0]];
+	   [newCategory1 setId:[NSNumber numberWithInt:1]];
+	   [newCategory1 setName:@"Food"];
+	   [newCategory1 setColor:@"#FF0000"];
+	   [newCategory1 setTotal:[NSNumber numberWithDouble:0]];
 	   
-	   [newCategory setId:[NSNumber numberWithInt:2]];
-	   [newCategory setName:@"Entertainment"];
-	   [newCategory setColor:@"#0000FF"];
-	   [newCategory setTotal:[NSNumber numberWithDouble:0]];
+	   SPCategory *newCategory2 = [SPCategory MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
 	   
-	   [newCategory setId:[NSNumber numberWithInt:3]];
-	   [newCategory setName:@"Essentials"];
-	   [newCategory setColor:@"#00FF00"];
-	   [newCategory setTotal:[NSNumber numberWithDouble:0]];
+	   [newCategory2 setId:[NSNumber numberWithInt:2]];
+	   [newCategory2 setName:@"Entertainment"];
+	   [newCategory2 setColor:@"#0000FF"];
+	   [newCategory2 setTotal:[NSNumber numberWithDouble:0]];
+							 
+	   SPCategory *newCategory3 = [SPCategory MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
 	   
-	   [newCategory setId:[NSNumber numberWithInt:4]];
-	   [newCategory setName:@"Other"];
-	   [newCategory setColor:@"#FFFF00"];
-	   [newCategory setTotal:[NSNumber numberWithDouble:0]];
+	   [newCategory3 setId:[NSNumber numberWithInt:3]];
+	   [newCategory3 setName:@"Essentials"];
+	   [newCategory3 setColor:@"#00FF00"];
+	   [newCategory3 setTotal:[NSNumber numberWithDouble:0]];
+	   
+	   SPCategory *newCategory4 = [SPCategory MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+	   
+	   [newCategory4 setId:[NSNumber numberWithInt:4]];
+	   [newCategory4 setName:@"Other"];
+	   [newCategory4 setColor:@"#FFFF00"];
+	   [newCategory4 setTotal:[NSNumber numberWithDouble:0]];
 	   
 	   [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
     }
@@ -51,6 +57,20 @@
     }
     
     return total;
+}
+
++ (double)returnCategoryTotal:(int)category{
+    NSArray *categories = [SPCategory MR_findAll];
+    SPCategory *cat = categories[category];
+    
+    return [[cat total]doubleValue];
+}
+
++ (NSString *)returnCategoryName:(int)category{
+    NSArray *categories = [SPCategory MR_findAll];
+    SPCategory *cat = categories[category];
+    
+    return [cat name];
 }
 
 @end
