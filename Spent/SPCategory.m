@@ -20,25 +20,31 @@
 	   SPCategory *newCategory1 = [SPCategory MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
 	   [newCategory1 setId:[NSNumber numberWithInt:1]];
 	   [newCategory1 setName:@"Food"];
-	   [newCategory1 setColor:@"#FF0000"];
+	   [newCategory1 setColor:@"#FF2C76"];
 	   [newCategory1 setTotal:[NSNumber numberWithDouble:0]];
+	   
+	   [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
 	   
 	   SPCategory *newCategory2 = [SPCategory MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
 	   [newCategory2 setId:[NSNumber numberWithInt:2]];
 	   [newCategory2 setName:@"Entertainment"];
-	   [newCategory2 setColor:@"#0000FF"];
+	   [newCategory2 setColor:@"#3A4BFF"];
 	   [newCategory2 setTotal:[NSNumber numberWithDouble:0]];
+	   
+	   [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
 							 
 	   SPCategory *newCategory3 = [SPCategory MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
 	   [newCategory3 setId:[NSNumber numberWithInt:3]];
 	   [newCategory3 setName:@"Essentials"];
-	   [newCategory3 setColor:@"#00FF00"];
+	   [newCategory3 setColor:@"#35FF84"];
 	   [newCategory3 setTotal:[NSNumber numberWithDouble:0]];
+	   
+	   [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
 	   
 	   SPCategory *newCategory4 = [SPCategory MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
 	   [newCategory4 setId:[NSNumber numberWithInt:4]];
 	   [newCategory4 setName:@"Other"];
-	   [newCategory4 setColor:@"#FFFF00"];
+	   [newCategory4 setColor:@"#FFBA53"];
 	   [newCategory4 setTotal:[NSNumber numberWithDouble:0]];
 	   
 	   [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
