@@ -34,10 +34,35 @@
 - (IBAction)createEntity:(id)sender {
     NSMutableDictionary *dict = [NSMutableDictionary new];
     if (self.name.length >0 && self.amount.floatValue >0){
+	   // Sets name of transaction to current name text field
 	   [dict setObject:self.name forKey:@"name"];
+	   
+	   // Sets amount spent to current amount text field
 	   [dict setObject:self.amount forKey:@"amountSpent"];
-	   [dict setObject:self.date forKey:@"dateSpent"];
-	   [dict setObject:@4 forKey:@"category"];
+	   
+	   // Temporary Date Setter
+	   // Sets date to current date
+	   if (!self.date){
+		  // If date was unchanged/untouched, do something
+		  [dict setObject:self.date forKey:@"dateSpent"];
+	   }else{
+		  // Otherwise, set it to the current date
+		  [dict setObject:self.date forKey:@"dateSpent"];
+	   }
+	   
+	   // Temporary Category Setter
+	   // Sets category according to inserted text
+	   if([[self.category lowercaseString] isEqualToString:@"food"]){
+		  [dict setObject:@1 forKey:@"category"];
+	   }else if([[self.category lowercaseString] isEqualToString:@"entertainment"]){
+		  [dict setObject:@2 forKey:@"category"];
+	   }else if([[self.category lowercaseString] isEqualToString:@"essentials"]){
+		  [dict setObject:@3 forKey:@"category"];
+	   }else{
+		  [dict setObject:@4 forKey:@"category"];
+	   }
+	   
+	   // If there is a comment, set it to that, else empty string
 	   if(self.comment){
 		  [dict setObject:self.comment forKey:@"comment"];
 	   }else{
@@ -120,8 +145,8 @@
 }
 
 - (IBAction)categoryDidChange:(id)sender {
-    //UITextField *currentField = (UITextField *)sender;
-    //self.c = currentField.text;
+    UITextField *currentField = (UITextField *)sender;
+    self.category = currentField.text;
 }
 
 
