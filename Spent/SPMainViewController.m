@@ -39,16 +39,23 @@
 - (void)updateDisplay{
     self.amountDisplayLabel.text = [NSString stringWithFormat:@"$%.2f", [SPCategory returnTotal]];
     
+    // MUST FIX COLORIZING CATEGORIES (ADD HEX TO UICOLOR COMPATIBILITY)
+    // Coloring has to be implemented for the categories
+    
     self.category01_title.text = [SPCategory returnCategoryName:0];
+    //self.category01_title.textColor = [SPCategory returnCategoryColor:0];
     self.category01_amount.text = [NSString stringWithFormat:@"$%.2f", [SPCategory returnCategoryTotal:0]];
     
     self.category02_title.text = [SPCategory returnCategoryName:1];
+    //self.category01_title.textColor = [SPCategory returnCategoryColor:1;
     self.category02_amount.text = [NSString stringWithFormat:@"$%.2f", [SPCategory returnCategoryTotal:1]];
     
     self.category03_title.text = [SPCategory returnCategoryName:2];
+    //self.category01_title.textColor = [SPCategory returnCategoryColor:2];
     self.category03_amount.text = [NSString stringWithFormat:@"$%.2f", [SPCategory returnCategoryTotal:2]];
     
     self.category04_title.text = [SPCategory returnCategoryName:3];
+    //self.category01_title.textColor = [SPCategory returnCategoryColor:3];
     self.category04_amount.text = [NSString stringWithFormat:@"$%.2f", [SPCategory returnCategoryTotal:3]];
     
 }
