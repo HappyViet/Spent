@@ -73,4 +73,11 @@
     return [cat name];
 }
 
++ (NSString *)returnCategoryColor:(int)category{
+    NSArray *categories = [SPCategory MR_findAll];
+    SPCategory *cat = categories[category];
+    
+    return [cat color];
+}
+
 @end

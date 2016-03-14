@@ -42,13 +42,7 @@
 	   
 	   // Temporary Date Setter
 	   // Sets date to current date
-	   if (!self.date){
-		  // If date was unchanged/untouched, do something
-		  [dict setObject:self.date forKey:@"dateSpent"];
-	   }else{
-		  // Otherwise, set it to the current date
-		  [dict setObject:self.date forKey:@"dateSpent"];
-	   }
+	   [dict setObject:[NSDate date] forKey:@"dateSpent"];
 	   
 	   // Temporary Category Setter
 	   // Sets category according to inserted text
@@ -141,7 +135,8 @@
 
 - (IBAction)dateEntryDidChange:(id)sender {
     //UITextField *currentField = (UITextField *)sender;
-    self.date = [NSDate date];
+    //self.date = currentField.text;
+    // This shit is useless right now
 }
 
 - (IBAction)categoryDidChange:(id)sender {
