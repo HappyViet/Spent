@@ -387,6 +387,7 @@
                                         <connections>
                                             <outlet property="amountLabel" destination="LK8-gl-2vF" id="N4Z-KE-iqU"/>
                                             <outlet property="transactionNameLabel" destination="Qo4-5T-eKs" id="0ff-V3-ZIp"/>
+                                            <segue destination="hnL-e2-mFL" kind="modal" id="exO-xG-Ilo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -398,6 +399,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0XN-IU-sp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1651" y="652"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HUr-01-YyA">
+            <objects>
+                <viewController id="hnL-e2-mFL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fd0-Lb-CHB"/>
+                        <viewControllerLayoutGuide type="bottom" id="QPa-00-uT9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="scg-QM-45g">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bE8-rV-nDz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2391" y="652"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="mkb-hG-xL7">

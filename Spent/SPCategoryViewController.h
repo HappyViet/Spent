@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SPCategoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) id <MasterTransitionDelegate> masterTransitionDelegate;
 
 @end
