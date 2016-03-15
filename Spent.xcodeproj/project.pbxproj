@@ -133,9 +133,9 @@
 		264F7BA81C95FEDB008F17D2 /* Spent */ = {
 			isa = PBXGroup;
 			children = (
+				26B86AFF1C967E18004BF83A /* Custom Classes */,
 				264F7BB21C95FEDB008F17D2 /* Main.storyboard */,
 				264F7BBA1C95FEDB008F17D2 /* LaunchScreen.storyboard */,
-				26B86AFF1C967E18004BF83A /* Custom Classes */,
 				264F7BAC1C95FEDB008F17D2 /* AppDelegate.h */,
 				264F7BAD1C95FEDB008F17D2 /* AppDelegate.m */,
 				264F7BF01C960EDA008F17D2 /* ViewControllers */,

@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>MagicPie.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MagicalRecord.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6C2858C74713C3B67E807EC42B1BD561</key>
+		<key>3BBF87D7E6ED813FD8B3162E1FED8887</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7C1FADF051D62162C80F75C54F7E6C2A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B08F8181B89E3089B1D62325A817A1EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D54AB3ECEB9A8FBA15D4F73CBE326692</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DD8860763179D2A2BA2FCE242EF13758</key>
 		<dict>
 			<key>primary</key>
 			<true/>
