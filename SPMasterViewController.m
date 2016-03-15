@@ -9,9 +9,13 @@
 #import "SPMasterViewController.h"
 #import "SPMainViewController.h"
 #import "SPAddViewController.h"
+#import "SPMainPieViewController.h"
 
-@interface SPMasterViewController ()
+@interface SPMasterViewController (){
+    BOOL barDisplay;
+}
 @property (nonatomic, strong) SPMainViewController *mainVC;
+@property (nonatomic, strong) SPMainPieViewController *pieVC;
 @property (nonatomic, strong) SPAddViewController *addVC;
 
 @end
@@ -20,14 +24,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Check if we have our basic Categories on launch
     [SPCategory checkAndCreateBasicEntities];
     
-    self.mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"mainVC"];
-    self.mainVC.view.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-50);
-    [self addChildViewController:self.mainVC];
-    [self.view addSubview:self.mainVC.view];
-    [self.titleLabel setText:@"Main View"];
+    // Testing out display settings. YES for bars, NO for pie chart
+    barDisplay = NO;
+    
+    if(barDisplay){
+	   self.mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"mainVC"];
+	   self.mainVC.view.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-50);
+	   [self addChildViewController:self.mainVC];
+	   [self.view addSubview:self.mainVC.view];
+	   [self.titleLabel setText:@"Main View"];
+    }else{
+	   self.pieVC = [self.storyboard instantiateViewControllerWithIdentifier:@"pieVC"];
+	   self.pieVC.view.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-50);
+	   [self addChildViewController:self.pieVC];
+	   [self.view addSubview:self.pieVC.view];
+	   [self.titleLabel setText:@"Main View"];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,14 +57,19 @@
 	   self.addVC.masterTransitionDelegate = self;
 	   [self addChildViewController:self.addVC];
 	   [self.view addSubview:self.addVC.view];
+	   [self animateViewOut];
 	   
-	   [self animateMainViewOut];
-	   [self animateView:self.addVC.view toRect:self.mainVC.view.frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
-		  [self.menuButton setHidden:YES];
-		  [self.backButton setHidden:NO];
-		  [self.addButton setHidden:YES];
-		  [self.titleLabel setText:@"Add Transaction"];
-    }];
+	   if(barDisplay){
+		  [self animateView:self.addVC.view toRect:self.mainVC.view.frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {}];
+		  
+	   }else{
+		  [self animateView:self.addVC.view toRect:self.pieVC.view.frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {}];
+	   }
+	   
+	   [self.menuButton setHidden:YES];
+	   [self.backButton setHidden:NO];
+	   [self.addButton setHidden:YES];
+	   [self.titleLabel setText:@"Add Transaction"];
     }
     
 }
@@ -57,7 +77,7 @@
 
 
 - (IBAction)didClickBackButton:(id)sender {
-    [self animateMainViewIn];
+    [self animateViewIn];
     UIView *view = self.addVC.view;
     CGRect frame = CGRectMake(view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
     [self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
@@ -70,23 +90,36 @@
 #pragma mark -
 #pragma mark - Animations
 
-- (void)animateMainViewOut {
-    UIView *view = self.mainVC.view;
-    CGRect frame = CGRectMake(-1*view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
-    [self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
-	   
-    }];
+- (void)animateViewOut {
+    if(barDisplay){
+	   UIView *view = self.mainVC.view;
+	   CGRect frame = CGRectMake(-1*view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+	   [self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished){}];
+	   }else{
+		  UIView *view = self.pieVC.view;
+	   CGRect frame = CGRectMake(-1*view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+	   [self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished){}];
+	   }
 }
 
-- (void)animateMainViewIn {
-    CGRect frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-50);
-    [self animateView:self.mainVC.view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
-	   [self.titleLabel setText:@"Main View"];
-	   [self.menuButton setHidden:NO];
-	   [self.addButton setHidden:NO];
-	   [self.backButton setHidden:YES];
-	   [self.mainVC updateDisplay];
-    }];
+- (void)animateViewIn {
+    if(barDisplay){
+	   CGRect frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-50);
+	   [self animateView:self.mainVC.view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
+		  [self.titleLabel setText:@"Main View"];
+		  [self.menuButton setHidden:NO];
+		  [self.addButton setHidden:NO];
+		  [self.backButton setHidden:YES];
+		  [self.mainVC updateDisplay];}];
+	   }else{
+		  CGRect frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-50);
+	   [self animateView:self.pieVC.view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
+		  [self.titleLabel setText:@"Main View"];
+		  [self.menuButton setHidden:NO];
+		  [self.addButton setHidden:NO];
+		  [self.backButton setHidden:YES];
+		  [self.pieVC updateDisplay];}];
+	   }
 }
 
 - (void)animateView:(UIView *)view toRect:(CGRect)frame withDelay:(CGFloat)delay withCompletion:(void(^)(POPAnimation *animation, BOOL finished))completion {
