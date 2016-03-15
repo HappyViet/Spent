@@ -51,7 +51,7 @@
     self.category01_amount.textColor = [self.category01_title.textColor colorWithAlphaComponent:.7];
     self.category01_bar.progressTintColor = self.category01_title.textColor;
     self.category01_bar.trackTintColor = [self.category01_amount.textColor colorWithAlphaComponent:.2];
-    self.category01_bar.progress = categoryTotal/total;
+    [self.category01_bar setProgress:categoryTotal/total animated:YES];
     
     categoryTotal = [SPCategory returnCategoryTotal:1];
     self.category02_title.text = [SPCategory returnCategoryName:1];
@@ -60,7 +60,7 @@
     self.category02_amount.textColor = [self.category02_title.textColor colorWithAlphaComponent:.7];
     self.category02_bar.progressTintColor = self.category02_title.textColor;
     self.category02_bar.trackTintColor = [self.category02_amount.textColor colorWithAlphaComponent:.2];
-    self.category02_bar.progress = categoryTotal/total;
+    [self.category02_bar setProgress:categoryTotal/total animated:YES];
     
     categoryTotal = [SPCategory returnCategoryTotal:2];
     self.category03_title.text = [SPCategory returnCategoryName:2];
@@ -69,7 +69,7 @@
     self.category03_amount.textColor = [self.category03_title.textColor colorWithAlphaComponent:.7];
     self.category03_bar.progressTintColor = self.category03_title.textColor;
     self.category03_bar.trackTintColor = [self.category03_amount.textColor colorWithAlphaComponent:.2];
-    self.category03_bar.progress = categoryTotal/total;
+    [self.category03_bar setProgress:categoryTotal/total animated:YES];
     
     categoryTotal = [SPCategory returnCategoryTotal:3];
     self.category04_title.text = [SPCategory returnCategoryName:3];
@@ -78,7 +78,7 @@
     self.category04_amount.textColor = [self.category04_title.textColor colorWithAlphaComponent:.7];
     self.category04_bar.progressTintColor = self.category04_title.textColor;
     self.category04_bar.trackTintColor = [self.category04_amount.textColor colorWithAlphaComponent:.2];
-    self.category04_bar.progress = categoryTotal/total;
+    [self.category04_bar setProgress:categoryTotal/total animated:YES];
     
 }
 
