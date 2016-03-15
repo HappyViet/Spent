@@ -16,28 +16,36 @@
 + (void)checkAndCreateBasicEntities{
     NSArray *categories = [SPCategory MR_findAll];
     
-    if(!(categories.count >0)){
-	   SPCategory *newCategory = [SPCategory MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+    if(!(categories.count >3)){
+	   SPCategory *newCategory1 = [SPCategory MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+	   [newCategory1 setId:[NSNumber numberWithInt:1]];
+	   [newCategory1 setName:@"Food"];
+	   [newCategory1 setColor:@"#FF2C76"];
+	   [newCategory1 setTotal:[NSNumber numberWithDouble:0]];
 	   
-	   [newCategory setId:[NSNumber numberWithInt:1]];
-	   [newCategory setName:@"Food"];
-	   [newCategory setColor:@"#FF0000"];
-	   [newCategory setTotal:[NSNumber numberWithDouble:0]];
+	   [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
 	   
-	   [newCategory setId:[NSNumber numberWithInt:2]];
-	   [newCategory setName:@"Entertainment"];
-	   [newCategory setColor:@"#0000FF"];
-	   [newCategory setTotal:[NSNumber numberWithDouble:0]];
+	   SPCategory *newCategory2 = [SPCategory MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+	   [newCategory2 setId:[NSNumber numberWithInt:2]];
+	   [newCategory2 setName:@"Entertainment"];
+	   [newCategory2 setColor:@"#3A4BFF"];
+	   [newCategory2 setTotal:[NSNumber numberWithDouble:0]];
 	   
-	   [newCategory setId:[NSNumber numberWithInt:3]];
-	   [newCategory setName:@"Essentials"];
-	   [newCategory setColor:@"#00FF00"];
-	   [newCategory setTotal:[NSNumber numberWithDouble:0]];
+	   [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
+							 
+	   SPCategory *newCategory3 = [SPCategory MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+	   [newCategory3 setId:[NSNumber numberWithInt:3]];
+	   [newCategory3 setName:@"Essentials"];
+	   [newCategory3 setColor:@"#35FF84"];
+	   [newCategory3 setTotal:[NSNumber numberWithDouble:0]];
 	   
-	   [newCategory setId:[NSNumber numberWithInt:4]];
-	   [newCategory setName:@"Other"];
-	   [newCategory setColor:@"#FFFF00"];
-	   [newCategory setTotal:[NSNumber numberWithDouble:0]];
+	   [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
+	   
+	   SPCategory *newCategory4 = [SPCategory MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+	   [newCategory4 setId:[NSNumber numberWithInt:4]];
+	   [newCategory4 setName:@"Other"];
+	   [newCategory4 setColor:@"#FFBA53"];
+	   [newCategory4 setTotal:[NSNumber numberWithDouble:0]];
 	   
 	   [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
     }
@@ -51,6 +59,33 @@
     }
     
     return total;
+}
+
++ (double)returnCategoryTotal:(int)category{
+    NSArray *categories = [SPCategory MR_findAll];
+    SPCategory *cat = categories[category];
+    
+    return [[cat total]doubleValue];
+}
+
++ (NSString *)returnCategoryName:(int)category{
+    NSArray *categories = [SPCategory MR_findAll];
+    SPCategory *cat = categories[category];
+    
+    return [cat name];
+}
+
++ (UIColor *)returnCategoryColor:(int)category{
+    NSArray *categories = [SPCategory MR_findAll];
+    SPCategory *cat = categories[category];
+    
+    // Taken from http://stackoverflow.com/questions/1560081/how-can-i-create-a-uicolor-from-a-hex-string
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:[cat color]];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    
+    return [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0];
 }
 
 @end

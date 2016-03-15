@@ -27,6 +27,8 @@
 		264F7BF41C964A50008F17D2 /* SPAmountViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 264F7BF31C964A50008F17D2 /* SPAmountViewCell.m */; };
 		264F7BF71C964A6F008F17D2 /* SPDateViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 264F7BF61C964A6F008F17D2 /* SPDateViewCell.m */; };
 		264F7BFA1C964A90008F17D2 /* SPCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 264F7BF91C964A90008F17D2 /* SPCategoryTableViewCell.m */; };
+		26B86B021C96B518004BF83A /* SPCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B86B011C96B518004BF83A /* SPCategoryViewController.m */; };
+		26B86B091C96B69B004BF83A /* SPTransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B86B081C96B69B004BF83A /* SPTransactionTableViewCell.m */; };
 		E9BBDD75B5568A9471986C89 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8502BEF48540FA6C9D89434 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,10 @@
 		264F7BF61C964A6F008F17D2 /* SPDateViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPDateViewCell.m; sourceTree = "<group>"; };
 		264F7BF81C964A90008F17D2 /* SPCategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCategoryTableViewCell.h; sourceTree = "<group>"; };
 		264F7BF91C964A90008F17D2 /* SPCategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCategoryTableViewCell.m; sourceTree = "<group>"; };
+		26B86B001C96B518004BF83A /* SPCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCategoryViewController.h; sourceTree = "<group>"; };
+		26B86B011C96B518004BF83A /* SPCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCategoryViewController.m; sourceTree = "<group>"; };
+		26B86B071C96B69B004BF83A /* SPTransactionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTransactionTableViewCell.h; sourceTree = "<group>"; };
+		26B86B081C96B69B004BF83A /* SPTransactionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTransactionTableViewCell.m; sourceTree = "<group>"; };
 		90DEDCB6BD20CC85DD0B888F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EBDA86FABEFDBB3EA8F9FE16 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F8502BEF48540FA6C9D89434 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,23 +133,17 @@
 		264F7BA81C95FEDB008F17D2 /* Spent */ = {
 			isa = PBXGroup;
 			children = (
-				264F7BD11C95FF78008F17D2 /* SPTransaction+CoreDataProperties.h */,
-				264F7BD21C95FF78008F17D2 /* SPTransaction+CoreDataProperties.m */,
-				264F7BD31C95FF78008F17D2 /* SPTransaction.h */,
-				264F7BD41C95FF78008F17D2 /* SPTransaction.m */,
-				264F7BD51C95FF78008F17D2 /* SPCategory+CoreDataProperties.h */,
-				264F7BD61C95FF78008F17D2 /* SPCategory+CoreDataProperties.m */,
-				264F7BD71C95FF78008F17D2 /* SPCategory.h */,
-				264F7BD81C95FF78008F17D2 /* SPCategory.m */,
+				264F7BB21C95FEDB008F17D2 /* Main.storyboard */,
+				264F7BBA1C95FEDB008F17D2 /* LaunchScreen.storyboard */,
+				26B86AFF1C967E18004BF83A /* Custom Classes */,
 				264F7BAC1C95FEDB008F17D2 /* AppDelegate.h */,
 				264F7BAD1C95FEDB008F17D2 /* AppDelegate.m */,
 				264F7BF01C960EDA008F17D2 /* ViewControllers */,
+				26B86B031C96B62D004BF83A /* CategoryViewTableCells */,
 				264F7BEF1C960EC2008F17D2 /* AddViewTableCells */,
-				264F7BB81C95FEDB008F17D2 /* Assets.xcassets */,
-				264F7BB21C95FEDB008F17D2 /* Main.storyboard */,
-				264F7BBA1C95FEDB008F17D2 /* LaunchScreen.storyboard */,
 				264F7BBD1C95FEDB008F17D2 /* Info.plist */,
 				264F7BB51C95FEDB008F17D2 /* Spent.xcdatamodeld */,
+				264F7BB81C95FEDB008F17D2 /* Assets.xcassets */,
 				264F7BA91C95FEDB008F17D2 /* Supporting Files */,
 			);
 			path = Spent;
@@ -195,8 +195,34 @@
 				264F7BE11C960273008F17D2 /* SPMainViewController.m */,
 				264F7BE31C9604A3008F17D2 /* SPAddViewController.h */,
 				264F7BE41C9604A3008F17D2 /* SPAddViewController.m */,
+				26B86B001C96B518004BF83A /* SPCategoryViewController.h */,
+				26B86B011C96B518004BF83A /* SPCategoryViewController.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		26B86AFF1C967E18004BF83A /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				264F7BD11C95FF78008F17D2 /* SPTransaction+CoreDataProperties.h */,
+				264F7BD21C95FF78008F17D2 /* SPTransaction+CoreDataProperties.m */,
+				264F7BD31C95FF78008F17D2 /* SPTransaction.h */,
+				264F7BD41C95FF78008F17D2 /* SPTransaction.m */,
+				264F7BD51C95FF78008F17D2 /* SPCategory+CoreDataProperties.h */,
+				264F7BD61C95FF78008F17D2 /* SPCategory+CoreDataProperties.m */,
+				264F7BD71C95FF78008F17D2 /* SPCategory.h */,
+				264F7BD81C95FF78008F17D2 /* SPCategory.m */,
+			);
+			name = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		26B86B031C96B62D004BF83A /* CategoryViewTableCells */ = {
+			isa = PBXGroup;
+			children = (
+				26B86B071C96B69B004BF83A /* SPTransactionTableViewCell.h */,
+				26B86B081C96B69B004BF83A /* SPTransactionTableViewCell.m */,
+			);
+			name = CategoryViewTableCells;
 			sourceTree = "<group>";
 		};
 		4A8F586932F796CD6A998A0F /* Frameworks */ = {
@@ -380,8 +406,10 @@
 				264F7BFA1C964A90008F17D2 /* SPCategoryTableViewCell.m in Sources */,
 				264F7BB71C95FEDB008F17D2 /* Spent.xcdatamodeld in Sources */,
 				264F7BD91C95FF78008F17D2 /* SPTransaction+CoreDataProperties.m in Sources */,
+				26B86B091C96B69B004BF83A /* SPTransactionTableViewCell.m in Sources */,
 				264F7BE51C9604A3008F17D2 /* SPAddViewController.m in Sources */,
 				264F7BDA1C95FF78008F17D2 /* SPTransaction.m in Sources */,
+				26B86B021C96B518004BF83A /* SPCategoryViewController.m in Sources */,
 				264F7BAE1C95FEDB008F17D2 /* AppDelegate.m in Sources */,
 				264F7BAB1C95FEDB008F17D2 /* main.m in Sources */,
 				264F7BDB1C95FF78008F17D2 /* SPCategory+CoreDataProperties.m in Sources */,

@@ -15,7 +15,6 @@
 #import "SPAddTableViewCell.h"
 
 @interface SPAddViewController (){
-    NSArray *cellNames;
 }
 
 @end
@@ -24,7 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    cellNames = [NSArray arrayWithObjects:@"Name:", @"Amount:", @"Date:", @"Category:", nil];
     // Do any additional setup after loading the view.
 }
 
@@ -36,11 +34,34 @@
 - (IBAction)createEntity:(id)sender {
     NSMutableDictionary *dict = [NSMutableDictionary new];
     if (self.name.length >0 && self.amount.floatValue >0){
+	   // Sets name of transaction to current name text field
 	   [dict setObject:self.name forKey:@"name"];
+	   
+	   // Sets amount spent to current amount text field
 	   [dict setObject:self.amount forKey:@"amountSpent"];
-	   [dict setObject:self.date forKey:@"dateSpent"];
-	   [dict setObject:@4 forKey:@"category"];
-	   [dict setObject:@"" forKey:@"comment"];
+	   
+	   // Temporary Date Setter
+	   // Sets date to current date
+	   [dict setObject:[NSDate date] forKey:@"dateSpent"];
+	   
+	   // Temporary Category Setter
+	   // Sets category according to inserted text
+	   if([[self.category lowercaseString] isEqualToString:@"food"]){
+		  [dict setObject:@1 forKey:@"category"];
+	   }else if([[self.category lowercaseString] isEqualToString:@"entertainment"]){
+		  [dict setObject:@2 forKey:@"category"];
+	   }else if([[self.category lowercaseString] isEqualToString:@"essentials"]){
+		  [dict setObject:@3 forKey:@"category"];
+	   }else{
+		  [dict setObject:@4 forKey:@"category"];
+	   }
+	   
+	   // If there is a comment, set it to that, else empty string
+	   if(self.comment){
+		  [dict setObject:self.comment forKey:@"comment"];
+	   }else{
+		[dict setObject:@"" forKey:@"comment"];  
+	   }
     
 	   [SPTransaction buildTransactionFromDictionary:dict];
 	   [self.masterTransitionDelegate transitionToMaster:self];
@@ -54,35 +75,32 @@
     if (indexPath.row == 0){
 	   SPBasicTableViewCell *cell = (SPBasicTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"basicCell" forIndexPath:indexPath];
 	   [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-	   cell.nameTextField.text = cellNames[indexPath.row];
 	   cell.nameTextField.delegate = self;
-	   
+
 	   return cell;
     }else if (indexPath.row == 1){
 	   SPAmountViewCell *cell = (SPAmountViewCell *)[tableView dequeueReusableCellWithIdentifier:@"amountCell" forIndexPath:indexPath];
 	   [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-	   cell.amountTextField.text = cellNames[indexPath.row];
 	   cell.amountTextField.delegate = self;
-	   
+
 	   return cell;
     }else if (indexPath.row == 2){
 	   SPDateViewCell *cell = (SPDateViewCell *)[tableView dequeueReusableCellWithIdentifier:@"dateCell" forIndexPath:indexPath];
 	   [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-	   cell.dateTextField.text = cellNames[indexPath.row];
 	   cell.dateTextField.delegate = self;
-	   
+
 	   return cell;
     }else if (indexPath.row == 3){
 	   SPCategoryTableViewCell *cell = (SPCategoryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"categoryCell" forIndexPath:indexPath];
 	   [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-	   cell.categoryTextField.text = cellNames[indexPath.row];
 	   cell.categoryTextField.delegate = self;
-	   
+
 	   return cell;
     }else if (indexPath.row == 4){
 	   SPCommentTableViewCell *cell = (SPCommentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"commentCell" forIndexPath:indexPath];
 	   [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-	   cell.commentTextField.tag = indexPath.row;
+	   //cell.commentTextField.delegate = self;
+	   
 	   return cell;
     }
     SPAddTableViewCell *cell = (SPAddTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"addCell" forIndexPath:indexPath];
@@ -106,22 +124,26 @@
 #pragma mark - Text Field Delegate
 
 - (IBAction)fieldEntryDidChange:(id)sender {
-    /*
     UITextField *currentField = (UITextField *)sender;
-    if(currentField == 0){
-	   self.name = currentField.text;
-    }
-    else if (currentField.tag == 1){
-	   self.amount = [NSNumber numberWithDouble:[currentField.text doubleValue]];
-    }
-    else if (currentField.tag == 2){
-	   self.date = [NSDate date];
-	   //need to fix
-    }
-    else if (currentField.tag == 3){
-	   //need to make dropdown
-    }*/
+    self.name = currentField.text;
 }
+
+- (IBAction)amountEntryDidChange:(id)sender {
+    UITextField *currentField = (UITextField *)sender;
+    self.amount = [NSNumber numberWithDouble:[currentField.text doubleValue]];
+}
+
+- (IBAction)dateEntryDidChange:(id)sender {
+    //UITextField *currentField = (UITextField *)sender;
+    //self.date = currentField.text;
+    // This shit is useless right now
+}
+
+- (IBAction)categoryDidChange:(id)sender {
+    UITextField *currentField = (UITextField *)sender;
+    self.category = currentField.text;
+}
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
