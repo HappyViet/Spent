@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		261299A71C98AFB1004D70D2 /* SPMainPieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 261299A61C98AFB1004D70D2 /* SPMainPieViewController.m */; };
 		264F7BAB1C95FEDB008F17D2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 264F7BAA1C95FEDB008F17D2 /* main.m */; };
 		264F7BAE1C95FEDB008F17D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 264F7BAD1C95FEDB008F17D2 /* AppDelegate.m */; };
 		264F7BB41C95FEDB008F17D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 264F7BB21C95FEDB008F17D2 /* Main.storyboard */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		261299A51C98AFB1004D70D2 /* SPMainPieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPMainPieViewController.h; sourceTree = "<group>"; };
+		261299A61C98AFB1004D70D2 /* SPMainPieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMainPieViewController.m; sourceTree = "<group>"; };
 		264F7BA61C95FEDB008F17D2 /* Spent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		264F7BAA1C95FEDB008F17D2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		264F7BAC1C95FEDB008F17D2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 				264F7BDE1C9600C2008F17D2 /* SPMasterViewController.m */,
 				264F7BE01C960273008F17D2 /* SPMainViewController.h */,
 				264F7BE11C960273008F17D2 /* SPMainViewController.m */,
+				261299A51C98AFB1004D70D2 /* SPMainPieViewController.h */,
+				261299A61C98AFB1004D70D2 /* SPMainPieViewController.m */,
 				264F7BE31C9604A3008F17D2 /* SPAddViewController.h */,
 				264F7BE41C9604A3008F17D2 /* SPAddViewController.m */,
 				26B86B001C96B518004BF83A /* SPCategoryViewController.h */,
@@ -395,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				261299A71C98AFB1004D70D2 /* SPMainPieViewController.m in Sources */,
 				264F7BEB1C96063C008F17D2 /* SPCommentTableViewCell.m in Sources */,
 				264F7BF41C964A50008F17D2 /* SPAmountViewCell.m in Sources */,
 				264F7BDC1C95FF78008F17D2 /* SPCategory.m in Sources */,
