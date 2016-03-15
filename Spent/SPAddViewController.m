@@ -93,7 +93,7 @@
     }else if (indexPath.row == 3){
 	   SPCategoryTableViewCell *cell = (SPCategoryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"categoryCell" forIndexPath:indexPath];
 	   [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-	   cell.categoryTextField.delegate = self;
+//	   cell.categoryTextField.delegate = self;
 
 	   return cell;
     }else if (indexPath.row == 4){
@@ -139,10 +139,10 @@
     // This shit is useless right now
 }
 
-- (IBAction)categoryDidChange:(id)sender {
-    UITextField *currentField = (UITextField *)sender;
-    self.category = currentField.text;
-}
+//- (IBAction)categoryDidChange:(id)sender {
+//    UITextField *currentField = (UITextField *)sender;
+//    self.category = currentField.text;
+//}
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{

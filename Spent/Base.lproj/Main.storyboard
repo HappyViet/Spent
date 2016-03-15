@@ -230,29 +230,49 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Essentials" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eae-kR-cp7">
-                                                    <rect key="frame" x="99" y="15" width="493" height="30"/>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4E4-gt-4U8">
+                                                    <rect key="frame" x="98" y="8" width="494" height="43"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sb-Qx-0Cd">
+                                                            <rect key="frame" x="8" y="11" width="44" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVv-LD-Uaz">
+                                                            <rect key="frame" x="380" y="0.0" width="114" height="43"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="114" id="CTw-vY-10x"/>
+                                                                <constraint firstAttribute="height" constant="43" id="oJ3-f8-pHS"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Change"/>
+                                                            <connections>
+                                                                <action selector="didClickDropDownButton:" destination="kdF-wf-mRQ" eventType="touchUpInside" id="Uy2-5M-Mgt"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.10980392160000001" green="0.1450980392" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="Ef9-N8-oaf"/>
+                                                        <constraint firstItem="6sb-Qx-0Cd" firstAttribute="top" secondItem="4E4-gt-4U8" secondAttribute="top" constant="11" id="REt-KD-jmv"/>
+                                                        <constraint firstAttribute="height" constant="43" id="XEc-D7-seb"/>
+                                                        <constraint firstAttribute="trailing" secondItem="BVv-LD-Uaz" secondAttribute="trailing" id="kGt-vz-85G"/>
+                                                        <constraint firstItem="BVv-LD-Uaz" firstAttribute="top" secondItem="4E4-gt-4U8" secondAttribute="top" id="nK6-CB-eKb"/>
+                                                        <constraint firstItem="6sb-Qx-0Cd" firstAttribute="leading" secondItem="4E4-gt-4U8" secondAttribute="leading" constant="8" id="vyz-ue-5Jh"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="categoryDidChange:" destination="db3-fG-IY7" eventType="editingChanged" id="qTn-4W-sW8"/>
-                                                    </connections>
-                                                </textField>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Eae-kR-cp7" firstAttribute="leading" secondItem="fxq-yl-3Vv" secondAttribute="trailing" constant="9" id="6AV-Fx-2FA"/>
+                                                <constraint firstItem="4E4-gt-4U8" firstAttribute="leading" secondItem="fxq-yl-3Vv" secondAttribute="trailing" constant="8" id="1ag-1h-F0T"/>
                                                 <constraint firstItem="fxq-yl-3Vv" firstAttribute="top" secondItem="cVT-NX-TFZ" secondAttribute="top" constant="19" id="6h4-lC-wCt"/>
+                                                <constraint firstAttribute="trailing" secondItem="4E4-gt-4U8" secondAttribute="trailing" constant="8" id="8Sz-Og-crB"/>
                                                 <constraint firstItem="fxq-yl-3Vv" firstAttribute="leading" secondItem="cVT-NX-TFZ" secondAttribute="leading" constant="15" id="HOD-Hg-iZR"/>
-                                                <constraint firstAttribute="trailing" secondItem="Eae-kR-cp7" secondAttribute="trailing" constant="8" id="aGw-nM-2cF"/>
-                                                <constraint firstItem="Eae-kR-cp7" firstAttribute="top" secondItem="cVT-NX-TFZ" secondAttribute="top" constant="15" id="kFX-O1-TTf"/>
+                                                <constraint firstItem="4E4-gt-4U8" firstAttribute="top" secondItem="cVT-NX-TFZ" secondAttribute="top" constant="8" id="n3k-bS-65c"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.5308684658640237" green="0.76832829418249671" blue="0.79620009816753923" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="categoryTextField" destination="Eae-kR-cp7" id="MGg-ye-giK"/>
+                                            <outlet property="dropDownButton" destination="BVv-LD-Uaz" id="mIV-im-yWY"/>
+                                            <outlet property="selectedCategory" destination="6sb-Qx-0Cd" id="lS2-4H-s1D"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" rowHeight="120" id="viZ-bd-CrX" customClass="SPCommentTableViewCell">

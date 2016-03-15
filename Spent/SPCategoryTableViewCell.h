@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SPCategoryTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UITextField *categoryTextField;
+@interface SPCategoryTableViewCell : UITableViewCell <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *selectedCategory;
+@property (weak, nonatomic) IBOutlet UIButton *dropDownButton;
+@property (strong, nonatomic) UITableView *tableView;
+
 
 @end
