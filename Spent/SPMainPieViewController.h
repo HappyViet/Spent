@@ -11,5 +11,4 @@
 @interface SPMainPieViewController : UIViewController
 
 - (void) updateDisplay;
-
 @end
