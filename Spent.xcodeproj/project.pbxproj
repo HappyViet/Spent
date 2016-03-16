@@ -12,7 +12,6 @@
 		264F7BAE1C95FEDB008F17D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 264F7BAD1C95FEDB008F17D2 /* AppDelegate.m */; };
 		264F7BB41C95FEDB008F17D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 264F7BB21C95FEDB008F17D2 /* Main.storyboard */; };
 		264F7BB71C95FEDB008F17D2 /* Spent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 264F7BB51C95FEDB008F17D2 /* Spent.xcdatamodeld */; };
-		264F7BB91C95FEDB008F17D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 264F7BB81C95FEDB008F17D2 /* Assets.xcassets */; };
 		264F7BBC1C95FEDB008F17D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 264F7BBA1C95FEDB008F17D2 /* LaunchScreen.storyboard */; };
 		264F7BC71C95FEDB008F17D2 /* SpentUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 264F7BC61C95FEDB008F17D2 /* SpentUITests.m */; };
 		264F7BD91C95FF78008F17D2 /* SPTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 264F7BD21C95FF78008F17D2 /* SPTransaction+CoreDataProperties.m */; };
@@ -28,8 +27,10 @@
 		264F7BF41C964A50008F17D2 /* SPAmountViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 264F7BF31C964A50008F17D2 /* SPAmountViewCell.m */; };
 		264F7BF71C964A6F008F17D2 /* SPDateViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 264F7BF61C964A6F008F17D2 /* SPDateViewCell.m */; };
 		264F7BFA1C964A90008F17D2 /* SPCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 264F7BF91C964A90008F17D2 /* SPCategoryTableViewCell.m */; };
+		266996AF1C99182D005E0974 /* SPSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266996AE1C99182D005E0974 /* SPSettingsViewController.m */; };
 		26B86B021C96B518004BF83A /* SPCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B86B011C96B518004BF83A /* SPCategoryViewController.m */; };
 		26B86B091C96B69B004BF83A /* SPTransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B86B081C96B69B004BF83A /* SPTransactionTableViewCell.m */; };
+		26DB12C51C98D67C009B89CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26DB12C41C98D67C009B89CE /* Assets.xcassets */; };
 		E9BBDD75B5568A9471986C89 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8502BEF48540FA6C9D89434 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +53,6 @@
 		264F7BAD1C95FEDB008F17D2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		264F7BB31C95FEDB008F17D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		264F7BB61C95FEDB008F17D2 /* Spent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spent.xcdatamodel; sourceTree = "<group>"; };
-		264F7BB81C95FEDB008F17D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		264F7BBB1C95FEDB008F17D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		264F7BBD1C95FEDB008F17D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		264F7BC21C95FEDB008F17D2 /* SpentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,10 +85,13 @@
 		264F7BF61C964A6F008F17D2 /* SPDateViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPDateViewCell.m; sourceTree = "<group>"; };
 		264F7BF81C964A90008F17D2 /* SPCategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCategoryTableViewCell.h; sourceTree = "<group>"; };
 		264F7BF91C964A90008F17D2 /* SPCategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCategoryTableViewCell.m; sourceTree = "<group>"; };
+		266996AD1C99182D005E0974 /* SPSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSettingsViewController.h; sourceTree = "<group>"; };
+		266996AE1C99182D005E0974 /* SPSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSettingsViewController.m; sourceTree = "<group>"; };
 		26B86B001C96B518004BF83A /* SPCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCategoryViewController.h; sourceTree = "<group>"; };
 		26B86B011C96B518004BF83A /* SPCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCategoryViewController.m; sourceTree = "<group>"; };
 		26B86B071C96B69B004BF83A /* SPTransactionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTransactionTableViewCell.h; sourceTree = "<group>"; };
 		26B86B081C96B69B004BF83A /* SPTransactionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTransactionTableViewCell.m; sourceTree = "<group>"; };
+		26DB12C41C98D67C009B89CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90DEDCB6BD20CC85DD0B888F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EBDA86FABEFDBB3EA8F9FE16 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F8502BEF48540FA6C9D89434 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,7 +149,7 @@
 				264F7BEF1C960EC2008F17D2 /* AddViewTableCells */,
 				264F7BBD1C95FEDB008F17D2 /* Info.plist */,
 				264F7BB51C95FEDB008F17D2 /* Spent.xcdatamodeld */,
-				264F7BB81C95FEDB008F17D2 /* Assets.xcassets */,
+				26DB12C41C98D67C009B89CE /* Assets.xcassets */,
 				264F7BA91C95FEDB008F17D2 /* Supporting Files */,
 			);
 			path = Spent;
@@ -202,6 +205,8 @@
 				264F7BE41C9604A3008F17D2 /* SPAddViewController.m */,
 				26B86B001C96B518004BF83A /* SPCategoryViewController.h */,
 				26B86B011C96B518004BF83A /* SPCategoryViewController.m */,
+				266996AD1C99182D005E0974 /* SPSettingsViewController.h */,
+				266996AE1C99182D005E0974 /* SPSettingsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -333,7 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				264F7BBC1C95FEDB008F17D2 /* LaunchScreen.storyboard in Resources */,
-				264F7BB91C95FEDB008F17D2 /* Assets.xcassets in Resources */,
+				26DB12C51C98D67C009B89CE /* Assets.xcassets in Resources */,
 				264F7BB41C95FEDB008F17D2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +405,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				266996AF1C99182D005E0974 /* SPSettingsViewController.m in Sources */,
 				261299A71C98AFB1004D70D2 /* SPMainPieViewController.m in Sources */,
 				264F7BEB1C96063C008F17D2 /* SPCommentTableViewCell.m in Sources */,
 				264F7BF41C964A50008F17D2 /* SPAmountViewCell.m in Sources */,

@@ -30,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor clearColor];
     
     [self updateDisplay];
 }
@@ -38,6 +39,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark -
+#pragma mark - Bar View Display
 
 - (void)updateDisplay{
     float total =[SPCategory returnTotal];
