@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MasterTransitionDelegate;
+
 @interface SPSettingsViewController : UIViewController
+@property (weak, nonatomic) id <MasterTransitionDelegate> masterTransitionDelegate;
 
 @end
