@@ -66,8 +66,8 @@
 		264F7BD61C95FF78008F17D2 /* SPCategory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPCategory+CoreDataProperties.m"; sourceTree = "<group>"; };
 		264F7BD71C95FF78008F17D2 /* SPCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCategory.h; sourceTree = "<group>"; };
 		264F7BD81C95FF78008F17D2 /* SPCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCategory.m; sourceTree = "<group>"; };
-		264F7BDD1C9600C2008F17D2 /* SPMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPMasterViewController.h; path = ../SPMasterViewController.h; sourceTree = "<group>"; };
-		264F7BDE1C9600C2008F17D2 /* SPMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPMasterViewController.m; path = ../SPMasterViewController.m; sourceTree = "<group>"; };
+		264F7BDD1C9600C2008F17D2 /* SPMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPMasterViewController.h; sourceTree = "<group>"; };
+		264F7BDE1C9600C2008F17D2 /* SPMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMasterViewController.m; sourceTree = "<group>"; };
 		264F7BE01C960273008F17D2 /* SPMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPMainViewController.h; sourceTree = "<group>"; };
 		264F7BE11C960273008F17D2 /* SPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMainViewController.m; sourceTree = "<group>"; };
 		264F7BE31C9604A3008F17D2 /* SPAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAddViewController.h; sourceTree = "<group>"; };

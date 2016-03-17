@@ -10,6 +10,7 @@
 #import "SPMainViewController.h"
 #import "SPAddViewController.h"
 #import "SPMainPieViewController.h"
+#import "SPSettingsViewController.h"
 
 @interface SPMasterViewController (){
     BOOL barDisplay;
@@ -17,6 +18,7 @@
 @property (nonatomic, strong) SPMainViewController *mainVC;
 @property (nonatomic, strong) SPMainPieViewController *pieVC;
 @property (nonatomic, strong) SPAddViewController *addVC;
+@property (nonatomic, strong) SPSettingsViewController *settingsVC;
 
 @end
 
@@ -74,17 +76,49 @@
     
 }
 
+- (IBAction)didClickSettingsButton:(id)sender {
+    if (!self.settingsVC){
+	   self.settingsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsVC"];
+	   self.settingsVC.view.frame = CGRectMake(self.view.frame.size.width, 50, self.view.frame.size.width, self.view.frame.size.height-50);
+	   self.settingsVC.masterTransitionDelegate = self;
+	   [self addChildViewController:self.settingsVC];
+	   [self.view addSubview:self.settingsVC.view];
+	   [self animateViewOut];
+	   
+	   if(barDisplay){
+		  [self animateView:self.settingsVC.view toRect:self.mainVC.view.frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {}];
+		  
+	   }else{
+		  [self animateView:self.settingsVC.view toRect:self.pieVC.view.frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {}];
+	   }
+	   
+	   [self.menuButton setHidden:YES];
+	   [self.backButton setHidden:NO];
+	   [self.addButton setHidden:YES];
+	   [self.titleLabel setText:@"Settings"];
+    }
+}
 
 
 - (IBAction)didClickBackButton:(id)sender {
     [self animateViewIn];
-    UIView *view = self.addVC.view;
-    CGRect frame = CGRectMake(view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
-    [self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
-	   [self.addVC removeFromParentViewController];
-	   [self.addVC.view removeFromSuperview];
-	   self.addVC = nil;
-    }];
+    if(self.addVC.view){
+	   UIView *view = self.addVC.view;
+	   CGRect frame = CGRectMake(view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+	   [self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
+		  [self.addVC removeFromParentViewController];
+		  [self.addVC.view removeFromSuperview];
+		  self.addVC = nil;
+	   }];}
+    else if(self.settingsVC.view){
+	   UIView *view = self.settingsVC.view;
+	   CGRect frame = CGRectMake(view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+	   [self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
+		  [self.settingsVC removeFromParentViewController];
+		  [self.settingsVC.view removeFromSuperview];
+		  self.settingsVC = nil;
+	   }];
+    }
 }
 
 #pragma mark -

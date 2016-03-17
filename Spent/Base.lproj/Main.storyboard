@@ -27,7 +27,7 @@
                                             <constraint firstAttribute="width" constant="66" id="6cv-MO-eK8"/>
                                         </constraints>
                                         <state key="normal" title="ADD">
-                                            <color key="titleColor" red="0.19215686274509802" green="1" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.17254901959999999" green="0.90980392160000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="didClickAddButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AuK-Ws-nOQ"/>
@@ -41,6 +41,9 @@
                                         <state key="normal" title="MENU">
                                             <color key="titleColor" red="0.17254901960784313" green="0.90980392156862744" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didClickSettingsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R5H-0k-3nQ"/>
+                                        </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjr-YX-gNh">
                                         <rect key="frame" x="0.0" y="0.0" width="74" height="50"/>
@@ -57,7 +60,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE OF SCREEN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ynv-Ej-Zgb">
                                         <rect key="frame" x="230" y="17" width="140" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.19215686274509802" green="1" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.17254901959999999" green="0.90980392160000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -318,7 +321,7 @@
                                                         <constraint firstAttribute="height" constant="59" id="NCU-0V-AKK"/>
                                                     </constraints>
                                                     <state key="normal" title="ADD">
-                                                        <color key="titleColor" red="0.19215686269999999" green="1" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleColor" red="0.17254901959999999" green="0.90980392160000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="createEntity:" destination="db3-fG-IY7" eventType="touchUpInside" id="KwD-Q0-549"/>
@@ -440,7 +443,7 @@
         <!--Settings View Controller-->
         <scene sceneID="c4u-ow-pGN">
             <objects>
-                <viewController storyboardIdentifier="settingVC" id="xJi-Zm-Axr" customClass="SPSettingsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingsVC" id="xJi-Zm-Axr" customClass="SPSettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1EC-Wh-ejr"/>
                         <viewControllerLayoutGuide type="bottom" id="9he-QS-15T"/>
@@ -496,7 +499,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AMOUNT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsh-UW-vjf">
                                 <rect key="frame" x="263" y="49" width="74" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.19215686274509802" green="1" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.90980392160000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category 01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITR-0R-Erd">
@@ -713,7 +716,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AMOUNT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxb-ch-rub">
                                 <rect key="frame" x="263" y="169" width="74" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.19215686269999999" green="1" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.90980392160000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
