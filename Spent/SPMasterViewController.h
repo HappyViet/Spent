@@ -11,7 +11,6 @@
 @protocol MasterTransitionDelegate <NSObject>
 
 -(void)transitionToMaster:(UIViewController *)controller;
-
 @end
 
 @interface SPMasterViewController : UIViewController <MasterTransitionDelegate>

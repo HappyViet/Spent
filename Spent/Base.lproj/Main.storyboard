@@ -366,7 +366,7 @@
         <!--Category View Controller-->
         <scene sceneID="Rhh-bE-HH8">
             <objects>
-                <viewController id="MA2-87-5Kf" customClass="SPCategoryViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="categoryVC" id="MA2-87-5Kf" customClass="SPCategoryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cxj-Ef-KuP"/>
                         <viewControllerLayoutGuide type="bottom" id="Vez-Fa-eWP"/>
@@ -460,6 +460,9 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NcH-WV-UDh">
                                 <rect key="frame" x="114" y="30" width="51" height="31"/>
+                                <connections>
+                                    <action selector="didTouchSwitch:" destination="xJi-Zm-Axr" eventType="touchUpInside" id="16r-ZR-WrE"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -590,10 +593,18 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6vL-CA-OB9">
+                                <rect key="frame" x="0.0" y="447" width="173" height="153"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="SsZ-SN-4gZ" id="neP-wD-Lue"/>
+                                    <outlet property="delegate" destination="SsZ-SN-4gZ" id="MmC-ae-RxU"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="U1P-Cq-iyU" firstAttribute="top" secondItem="GOe-Rw-xqm" secondAttribute="bottom" constant="33" id="0If-7u-2Lf"/>
+                            <constraint firstItem="6vL-CA-OB9" firstAttribute="leading" secondItem="1QE-IY-HLh" secondAttribute="leading" id="2sp-NO-kDf"/>
                             <constraint firstItem="LXE-7p-8Cp" firstAttribute="top" secondItem="E6K-3N-Cal" secondAttribute="bottom" constant="30" id="3T3-XY-Wsa"/>
                             <constraint firstItem="tco-Y0-D90" firstAttribute="leading" secondItem="1QE-IY-HLh" secondAttribute="leading" constant="20" id="4ok-cT-Tc7"/>
                             <constraint firstAttribute="trailing" secondItem="SQy-bY-Q17" secondAttribute="trailing" constant="20" id="Awo-vf-GAl"/>
@@ -621,6 +632,7 @@
                             <constraint firstItem="ITR-0R-Erd" firstAttribute="top" secondItem="hxL-ia-BHF" secondAttribute="bottom" constant="8" id="dCy-Rs-uEB"/>
                             <constraint firstItem="hxL-ia-BHF" firstAttribute="leading" secondItem="1QE-IY-HLh" secondAttribute="leading" constant="20" id="f4O-IP-b1O"/>
                             <constraint firstItem="Hsh-UW-vjf" firstAttribute="top" secondItem="flv-xo-qlT" secondAttribute="bottom" constant="8" id="gDG-J2-Bf8"/>
+                            <constraint firstItem="tR4-WC-5Qc" firstAttribute="top" secondItem="6vL-CA-OB9" secondAttribute="bottom" id="hUg-Wq-5CR"/>
                             <constraint firstItem="U1P-Cq-iyU" firstAttribute="leading" secondItem="1QE-IY-HLh" secondAttribute="leading" constant="20" id="iCj-Lf-Eak"/>
                             <constraint firstItem="dkf-lh-Wso" firstAttribute="top" secondItem="gfo-1j-5U3" secondAttribute="bottom" constant="8" id="mqJ-AK-AMS"/>
                             <constraint firstItem="SQy-bY-Q17" firstAttribute="top" secondItem="dkf-lh-Wso" secondAttribute="bottom" constant="30" id="qPx-mV-uIy"/>
@@ -719,13 +731,23 @@
                                 <color key="textColor" red="0.17254901959999999" green="0.90980392160000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M5Y-8Y-Mz4">
+                                <rect key="frame" x="20" y="363" width="560" height="217"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="yAZ-Qq-dbh" id="tVu-jP-3WK"/>
+                                    <outlet property="delegate" destination="yAZ-Qq-dbh" id="Dz6-W3-ivg"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="M5Y-8Y-Mz4" firstAttribute="leading" secondItem="8nU-vH-6If" secondAttribute="leading" constant="20" id="7MA-cC-ZhK"/>
                             <constraint firstItem="6fT-Z8-kvd" firstAttribute="top" secondItem="vev-py-3Am" secondAttribute="bottom" constant="120" id="GpG-gR-Sz0"/>
                             <constraint firstItem="qxb-ch-rub" firstAttribute="centerX" secondItem="8nU-vH-6If" secondAttribute="centerX" id="H1L-bS-mXy"/>
                             <constraint firstItem="qxb-ch-rub" firstAttribute="top" secondItem="6fT-Z8-kvd" secondAttribute="bottom" constant="8" id="T3V-MJ-AYY"/>
                             <constraint firstItem="6fT-Z8-kvd" firstAttribute="centerX" secondItem="8nU-vH-6If" secondAttribute="centerX" id="rGH-js-jiD"/>
+                            <constraint firstItem="M5Y-8Y-Mz4" firstAttribute="centerX" secondItem="8nU-vH-6If" secondAttribute="centerX" id="sfz-Zf-NRQ"/>
+                            <constraint firstAttribute="trailing" secondItem="M5Y-8Y-Mz4" secondAttribute="trailing" constant="20" id="x1l-vS-x58"/>
                         </constraints>
                     </view>
                     <connections>
