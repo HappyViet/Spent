@@ -11,6 +11,7 @@
 #import "SPAddViewController.h"
 #import "SPMainPieViewController.h"
 #import "SPSettingsViewController.h"
+#import "SPCategoryViewController.h"
 
 @interface SPMasterViewController (){
     BOOL barDisplay;
@@ -19,7 +20,7 @@
 @property (nonatomic, strong) SPMainPieViewController *pieVC;
 @property (nonatomic, strong) SPAddViewController *addVC;
 @property (nonatomic, strong) SPSettingsViewController *settingsVC;
-
+@property (nonatomic, strong) SPCategoryViewController	*categoryVC;
 @end
 
 @implementation SPMasterViewController
@@ -28,9 +29,9 @@
     [super viewDidLoad];
     // Check if we have our basic Categories on launch
     [SPCategory checkAndCreateBasicEntities];
+    barDisplay = [[NSUserDefaults standardUserDefaults] boolForKey:@"barDisplay"];
     
     // Testing out display settings. YES for bars, NO for pie chart
-    barDisplay = NO;
     
     if(barDisplay){
 	   self.mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"mainVC"];
@@ -103,21 +104,52 @@
 - (IBAction)didClickBackButton:(id)sender {
     [self animateViewIn];
     if(self.addVC.view){
-	   UIView *view = self.addVC.view;
-	   CGRect frame = CGRectMake(view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
-	   [self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
+	    UIView *view = self.addVC.view;
+	    CGRect frame = CGRectMake(view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+	    [self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
 		  [self.addVC removeFromParentViewController];
 		  [self.addVC.view removeFromSuperview];
 		  self.addVC = nil;
-	   }];}
+	   }];
+    }
     else if(self.settingsVC.view){
-	   UIView *view = self.settingsVC.view;
-	   CGRect frame = CGRectMake(view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
-	   [self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
+	   if (barDisplay == [[NSUserDefaults standardUserDefaults] boolForKey:@"barDisplay"]){
+		  UIView *view = self.settingsVC.view;
+		  CGRect frame = CGRectMake(view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+		  [self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
+			 [self.settingsVC removeFromParentViewController];
+			 [self.settingsVC.view removeFromSuperview];
+			 self.settingsVC = nil;
+		  }];
+	   }else{
+		  barDisplay = [[NSUserDefaults standardUserDefaults] boolForKey:@"barDisplay"];
 		  [self.settingsVC removeFromParentViewController];
 		  [self.settingsVC.view removeFromSuperview];
 		  self.settingsVC = nil;
-	   }];
+
+		  if(barDisplay){
+			 [self.pieVC removeFromParentViewController];
+			 [self.pieVC.view removeFromSuperview];
+			 self.pieVC = nil;
+			 self.mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"mainVC"];
+			 self.mainVC.view.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-50);
+			 [self addChildViewController:self.mainVC];
+			 [self.view addSubview:self.mainVC.view];
+			 [self.titleLabel setText:@"Main View"];
+		  }else{
+			 [self.mainVC removeFromParentViewController];
+			 [self.mainVC.view removeFromSuperview];
+			 self.mainVC = nil;
+			 self.pieVC = [self.storyboard instantiateViewControllerWithIdentifier:@"pieVC"];
+			 self.pieVC.view.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-50);
+			 [self addChildViewController:self.pieVC];
+			 [self.view addSubview:self.pieVC.view];
+			 [self.titleLabel setText:@"Main View"];
+		  }
+	   }
+    }
+    else if (self.categoryVC.view){
+	    
     }
 }
 
@@ -125,35 +157,33 @@
 #pragma mark - Animations
 
 - (void)animateViewOut {
+    UIView *view;
+    
     if(barDisplay){
-	   UIView *view = self.mainVC.view;
-	   CGRect frame = CGRectMake(-1*view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
-	   [self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished){}];
-	   }else{
-		  UIView *view = self.pieVC.view;
-	   CGRect frame = CGRectMake(-1*view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
-	   [self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished){}];
-	   }
+	   view = self.mainVC.view;
+    }else{
+	   view = self.pieVC.view;
+    }
+    
+    CGRect frame = CGRectMake(-1*view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+    [self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished){}];
 }
 
 - (void)animateViewIn {
+    CGRect frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-50);
+    
     if(barDisplay){
-	   CGRect frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-50);
 	   [self animateView:self.mainVC.view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
-		  [self.titleLabel setText:@"Main View"];
-		  [self.menuButton setHidden:NO];
-		  [self.addButton setHidden:NO];
-		  [self.backButton setHidden:YES];
 		  [self.mainVC updateDisplay];}];
-	   }else{
-		  CGRect frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-50);
+    }else{
 	   [self animateView:self.pieVC.view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
-		  [self.titleLabel setText:@"Main View"];
-		  [self.menuButton setHidden:NO];
-		  [self.addButton setHidden:NO];
-		  [self.backButton setHidden:YES];
 		  [self.pieVC updateDisplay];}];
-	   }
+    }
+    
+    [self.titleLabel setText:@"Main View"];
+    [self.menuButton setHidden:NO];
+    [self.addButton setHidden:NO];
+    [self.backButton setHidden:YES];
 }
 
 - (void)animateView:(UIView *)view toRect:(CGRect)frame withDelay:(CGFloat)delay withCompletion:(void(^)(POPAnimation *animation, BOOL finished))completion {
@@ -173,6 +203,9 @@
 -(void)transitionToMaster:(UIViewController *)controller{
     if(controller == self.addVC){
 	   [self didClickBackButton:nil];
+    }
+    else if(controller == self.settingsVC){
+	    [self didClickBackButton:self.settingsVC.view];
     }
 }
 

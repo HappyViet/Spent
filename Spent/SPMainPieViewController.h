@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SPMainPieViewController : UIViewController
+@interface SPMainPieViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 - (void) updateDisplay;
 @end

@@ -127,6 +127,24 @@
     }
 }
 
+#pragma mark -
+#pragma mark - UIPickerView Delegate
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+	return 1;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+	return [SPCategory numberOfTotalCategories];
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+	return [SPCategory returnCategoryName:(int)row];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+}
+
 /*
 #pragma mark - Navigation
 

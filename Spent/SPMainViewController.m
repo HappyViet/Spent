@@ -23,16 +23,14 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *category02_bar;
 @property (weak, nonatomic) IBOutlet UIProgressView *category03_bar;
 @property (weak, nonatomic) IBOutlet UIProgressView *category04_bar;
-
 @end
 
 @implementation SPMainViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.backgroundColor = [UIColor clearColor];
-    
-    [self updateDisplay];
+	[super viewDidLoad];
+	self.view.backgroundColor = [UIColor clearColor];
+	[self updateDisplay];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,6 +80,24 @@
     self.category04_bar.progressTintColor = self.category04_title.textColor;
     self.category04_bar.trackTintColor = [self.category04_amount.textColor colorWithAlphaComponent:.2];
     [self.category04_bar setProgress:category04Total/total animated:YES];
+}
+
+#pragma mark -
+#pragma mark - UIPickerView Delegate
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+	return 1;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+	return [SPCategory numberOfTotalCategories];
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+	return [SPCategory returnCategoryName:(int)row];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
 }
 
 /*

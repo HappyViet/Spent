@@ -17,15 +17,19 @@
 @implementation SPSettingsViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    //if()
+	[super viewDidLoad];
+	[self.barDisplaySwitch setOn:[[NSUserDefaults standardUserDefaults] boolForKey:@"barDisplay"]];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+	[super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)didTouchSwitch:(id)sender {
+	[[NSUserDefaults standardUserDefaults] setBool:self.barDisplaySwitch.on forKey:@"barDisplay"];
+	[self.masterTransitionDelegate transitionToMaster:self];
 }
 
 /*
