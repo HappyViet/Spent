@@ -65,6 +65,18 @@
     
 	   [SPTransaction buildTransactionFromDictionary:dict];
 	   [self.masterTransitionDelegate transitionToMaster:self];
+    }else{
+	   UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+												  handler:^(UIAlertAction * action) {}];
+	   UIAlertController *alert;
+	   if(self.name.length <= 0){
+	   alert = [UIAlertController alertControllerWithTitle:@"Missing Name" message:@"Please fill in a name for the transaction." preferredStyle:UIAlertControllerStyleAlert];
+		  }else if(self.amount.floatValue <=0){
+			 alert = [UIAlertController alertControllerWithTitle:@"Incorrect Amount" message:@"Please make sure the amount is greater than 0." preferredStyle:UIAlertControllerStyleAlert];
+	   }
+	   
+	   [alert addAction:defaultAction];
+	   [self presentViewController:alert animated:YES completion:nil];
     }
 }
 

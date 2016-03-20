@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (double)returnCategoryTotal:(int)category;
 + (NSString *)returnCategoryName:(int)category;
 + (UIColor *)returnCategoryColor:(int)category;
++ (int)numberOfTotalCategories;
 
 @end
 

@@ -8,8 +8,8 @@
 
 #import "SPMainViewController.h"
 
-@interface SPMainViewController (){
-}
+@interface SPMainViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *amountDisplayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *category01_title;
 @property (weak, nonatomic) IBOutlet UILabel *category02_title;
@@ -23,16 +23,14 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *category02_bar;
 @property (weak, nonatomic) IBOutlet UIProgressView *category03_bar;
 @property (weak, nonatomic) IBOutlet UIProgressView *category04_bar;
-
 @end
 
 @implementation SPMainViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self updateDisplay];
-    // Do any additional setup after loading the view.
+	[super viewDidLoad];
+	self.view.backgroundColor = [UIColor clearColor];
+	[self updateDisplay];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,46 +38,66 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -
+#pragma mark - Bar View Display
+
 - (void)updateDisplay{
     float total =[SPCategory returnTotal];
     self.amountDisplayLabel.text = [NSString stringWithFormat:@"$%.2f", total];
     
-    float categoryTotal = [SPCategory returnCategoryTotal:0];
+    float category01Total = [SPCategory returnCategoryTotal:0];
     self.category01_title.text = [SPCategory returnCategoryName:0];
     self.category01_title.textColor = [SPCategory returnCategoryColor:0];
-    self.category01_amount.text = [NSString stringWithFormat:@"$%.2f", categoryTotal];
+    self.category01_amount.text = [NSString stringWithFormat:@"$%.2f", category01Total];
     self.category01_amount.textColor = [self.category01_title.textColor colorWithAlphaComponent:.7];
     self.category01_bar.progressTintColor = self.category01_title.textColor;
     self.category01_bar.trackTintColor = [self.category01_amount.textColor colorWithAlphaComponent:.2];
-    self.category01_bar.progress = categoryTotal/total;
+    [self.category01_bar setProgress:category01Total/total animated:YES];
     
-    categoryTotal = [SPCategory returnCategoryTotal:1];
+    float category02Total = [SPCategory returnCategoryTotal:1];
     self.category02_title.text = [SPCategory returnCategoryName:1];
     self.category02_title.textColor = [SPCategory returnCategoryColor:1];
-    self.category02_amount.text = [NSString stringWithFormat:@"$%.2f", categoryTotal];
+    self.category02_amount.text = [NSString stringWithFormat:@"$%.2f", category02Total];
     self.category02_amount.textColor = [self.category02_title.textColor colorWithAlphaComponent:.7];
     self.category02_bar.progressTintColor = self.category02_title.textColor;
     self.category02_bar.trackTintColor = [self.category02_amount.textColor colorWithAlphaComponent:.2];
-    self.category02_bar.progress = categoryTotal/total;
+    [self.category02_bar setProgress:category02Total/total animated:YES];
     
-    categoryTotal = [SPCategory returnCategoryTotal:2];
+    float category03Total = [SPCategory returnCategoryTotal:2];
     self.category03_title.text = [SPCategory returnCategoryName:2];
     self.category03_title.textColor = [SPCategory returnCategoryColor:2];
-    self.category03_amount.text = [NSString stringWithFormat:@"$%.2f", categoryTotal];
+    self.category03_amount.text = [NSString stringWithFormat:@"$%.2f", category03Total];
     self.category03_amount.textColor = [self.category03_title.textColor colorWithAlphaComponent:.7];
     self.category03_bar.progressTintColor = self.category03_title.textColor;
     self.category03_bar.trackTintColor = [self.category03_amount.textColor colorWithAlphaComponent:.2];
-    self.category03_bar.progress = categoryTotal/total;
+    [self.category03_bar setProgress:category03Total/total animated:YES];
     
-    categoryTotal = [SPCategory returnCategoryTotal:3];
+    float category04Total = [SPCategory returnCategoryTotal:3];
     self.category04_title.text = [SPCategory returnCategoryName:3];
     self.category04_title.textColor = [SPCategory returnCategoryColor:3];
-    self.category04_amount.text = [NSString stringWithFormat:@"$%.2f", categoryTotal];
+    self.category04_amount.text = [NSString stringWithFormat:@"$%.2f", category04Total];
     self.category04_amount.textColor = [self.category04_title.textColor colorWithAlphaComponent:.7];
     self.category04_bar.progressTintColor = self.category04_title.textColor;
     self.category04_bar.trackTintColor = [self.category04_amount.textColor colorWithAlphaComponent:.2];
-    self.category04_bar.progress = categoryTotal/total;
-    
+    [self.category04_bar setProgress:category04Total/total animated:YES];
+}
+
+#pragma mark -
+#pragma mark - UIPickerView Delegate
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+	return 1;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+	return [SPCategory numberOfTotalCategories];
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+	return [SPCategory returnCategoryName:(int)row];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
 }
 
 /*
