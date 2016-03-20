@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SPCategoryTableViewCell : UITableViewCell <UITableViewDataSource, UITableViewDelegate>
+@class SPCategoryTableViewCell;
+@protocol CategoryCellDelegate <NSObject>
+- (void)didClickChangeCategory:(SPCategoryTableViewCell *)sender;
+@end
+
+@interface SPCategoryTableViewCell : UITableViewCell
+@property (weak, nonatomic) id<CategoryCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *selectedCategory;
 @property (weak, nonatomic) IBOutlet UIButton *dropDownButton;
-@property (strong, nonatomic) UITableView *tableView;
-
 
 @end

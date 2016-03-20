@@ -14,7 +14,7 @@
 #import "SPCommentTableViewCell.h"
 #import "SPAddTableViewCell.h"
 
-@interface SPAddViewController (){
+@interface SPAddViewController () <CategoryCellDelegate>{
 }
 
 @end
@@ -94,6 +94,7 @@
 	   SPCategoryTableViewCell *cell = (SPCategoryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"categoryCell" forIndexPath:indexPath];
 	   [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 //	   cell.categoryTextField.delegate = self;
+        cell.delegate = self;
 
 	   return cell;
     }else if (indexPath.row == 4){

@@ -25,19 +25,7 @@
     // Configure the view for the selected state
 }
 - (IBAction)didClickDropDownButton:(id)sender {
-    UIViewController *viewController = [[UIViewController alloc] init];
-    float tableHeight = [categoryArray count]*30;
-    UIView *viewForCategory = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, tableHeight)];
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 40, tableHeight)];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.hidden = NO;
-    self.tableView.showsHorizontalScrollIndicator = NO;
-    [viewForCategory addSubview:self.tableView];
-    [viewController.view addSubview:viewForCategory];
-    
-    [viewController setModalPresentationStyle:UIModalPresentationPopover];
-    
+    [self.delegate didClickChangeCategory:self];
 }
 
 
