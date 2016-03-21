@@ -14,7 +14,9 @@
 #import "SPCommentTableViewCell.h"
 #import "SPAddTableViewCell.h"
 
-@interface SPAddViewController ()
+@interface SPAddViewController (){
+	
+}
 
 @end
 
@@ -22,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	self.date = [NSDate date];
     // Do any additional setup after loading the view.
 }
 
@@ -41,7 +44,13 @@
 	   
 	   // Temporary Date Setter
 	   // Sets date to current date
-	   [dict setObject:[NSDate date] forKey:@"dateSpent"];
+	    if([[NSDate date] compare:self.date] == NSOrderedAscending){
+		    NSLog(@"Future date attempted to be placed.");
+		    [dict setObject:[NSDate date] forKey:@"dateSpent"];
+	    }
+	    else{
+		    [dict setObject:self.date forKey:@"dateSpent"];
+	    }
 	   
 	   // Temporary Category Setter
 	   // Sets category according to inserted text
@@ -125,10 +134,10 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row != 4){
-	   return 60;
+    if (indexPath.row == 2 || indexPath.row == 4){
+	   return 120;
     }
-    return 120;
+    return 60;
 }
 
 #pragma mark -
@@ -144,11 +153,12 @@
     self.amount = [NSNumber numberWithDouble:[currentField.text doubleValue]];
 }
 
-- (IBAction)dateEntryDidChange:(id)sender {
-    //UITextField *currentField = (UITextField *)sender;
-    //self.date = currentField.text;
-    // This shit is useless right now
+- (IBAction)dateDidChange:(id)sender {
+	UIDatePicker *datePicker = (UIDatePicker *)sender;
+	NSLog(@"Inside date did change: %@", [datePicker date]);
+	self.date = [datePicker date];
 }
+
 
 - (IBAction)categoryDidChange:(id)sender {
     UITextField *currentField = (UITextField *)sender;

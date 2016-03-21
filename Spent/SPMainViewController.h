@@ -11,5 +11,6 @@
 @interface SPMainViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 - (void) updateDisplay;
+- (void) updateDisplayWithDaysBack:(int)days;
 
 @end

@@ -147,6 +147,7 @@
 				264F7BF01C960EDA008F17D2 /* ViewControllers */,
 				26B86B031C96B62D004BF83A /* CategoryViewTableCells */,
 				264F7BEF1C960EC2008F17D2 /* AddViewTableCells */,
+				26AECA6B1C9FF10800F78B00 /* Picker View Classes */,
 				264F7BBD1C95FEDB008F17D2 /* Info.plist */,
 				264F7BB51C95FEDB008F17D2 /* Spent.xcdatamodeld */,
 				26DB12C41C98D67C009B89CE /* Assets.xcassets */,
@@ -209,6 +210,13 @@
 				266996AE1C99182D005E0974 /* SPSettingsViewController.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		26AECA6B1C9FF10800F78B00 /* Picker View Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Picker View Classes";
 			sourceTree = "<group>";
 		};
 		26B86AFF1C967E18004BF83A /* Custom Classes */ = {

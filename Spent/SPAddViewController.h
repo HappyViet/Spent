@@ -12,9 +12,8 @@
 
 @interface SPAddViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) id <MasterTransitionDelegate> masterTransitionDelegate;
-@property (weak, nonatomic) IBOutlet UITableView *addTableView;
 @property (nonatomic, strong) NSString *name, *comment, *category;
-@property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSNumber *amount;
+@property (nonatomic, strong) NSDate *date;
 
 @end

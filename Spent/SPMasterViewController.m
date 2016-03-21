@@ -46,6 +46,8 @@
 	   [self.view addSubview:self.pieVC.view];
 	   [self.titleLabel setText:@"Main View"];
     }
+	
+	NSLog(@"\nTesting date grabber.\nDays back: %d\nTotal: %f", 5, [SPCategory returnCategoryTotalDate:3 daysBack:5]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -148,9 +150,15 @@
 		  }
 	   }
     }
-    else if (self.categoryVC.view){
-	    
-    }
+	else if(self.categoryVC.view){
+		UIView *view = self.categoryVC.view;
+		CGRect frame = CGRectMake(view.frame.size.width, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+		[self animateView:view toRect:frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {
+			[self.categoryVC removeFromParentViewController];
+			[self.categoryVC.view removeFromSuperview];
+			self.categoryVC = nil;
+		}];
+	}
 }
 
 #pragma mark -
@@ -207,6 +215,30 @@
     else if(controller == self.settingsVC){
 	    [self didClickBackButton:self.settingsVC.view];
     }
+    else if(controller == self.pieVC){
+	    NSLog(@"What the fuck");
+    }
+}
+
+-(void)transitionToCategory:(UIViewController *)controller indexNum:(int)index categoryName:(NSString *)nameCategory{
+	NSLog(@"Inside transition to category");
+	if(controller == self.mainVC || controller == self.pieVC){
+		if (!self.categoryVC){
+			self.categoryVC = [self.storyboard instantiateViewControllerWithIdentifier:@"categoryVC"];
+			self.categoryVC.view.frame = CGRectMake(self.view.frame.size.width, 50, self.view.frame.size.width, self.view.frame.size.height-50);
+			self.categoryVC.masterTransitionDelegate = self;
+			[self addChildViewController:self.categoryVC];
+			[self.view addSubview:self.categoryVC.view];
+			[self animateViewOut];
+			
+			[self animateView:self.categoryVC.view toRect:self.mainVC.view.frame withDelay:0 withCompletion:^(POPAnimation *animation, BOOL finished) {}];
+			
+			[self.menuButton setHidden:YES];
+			[self.backButton setHidden:NO];
+			[self.addButton setHidden:YES];
+			[self.titleLabel setText:nameCategory];
+		}
+	}
 }
 
 /*

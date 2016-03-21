@@ -106,6 +106,12 @@
     }
 }
 
+-(void)changeToCategoryView:(int)index categoryName:(NSString *)name{
+	NSLog(@"Inside change to category view");
+	[self.masterTransitionDelegate transitionToMaster:self];
+	[self.masterTransitionDelegate transitionToCategory:self indexNum:index categoryName:[SPCategory returnCategoryName:index]];
+}
+
 #pragma mark -
 #pragma mark - Tap Gesture Recognizer
 
@@ -143,6 +149,9 @@
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+	NSLog(@"Selected: %@", [SPCategory returnCategoryName:(int)row]);
+	// testing
+	[self changeToCategoryView:(int)row categoryName:[SPCategory returnCategoryName:(int)row]];
 }
 
 /*
