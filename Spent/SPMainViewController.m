@@ -87,13 +87,16 @@
 
 - (void) updateDisplayWithDaysBack:(int)days{
 	float total = 0;
-	
-	for (int i = 0; i <[SPCategory numberOfTotalCategories]; i++){
-		total += [SPCategory returnCategoryTotalDate:i daysBack:days];
-	}
+	float category01Total = [SPCategory returnCategoryTotalDate:0 daysBack:days];
+	total += category01Total;
+	float category02Total = [SPCategory returnCategoryTotalDate:1 daysBack:days];
+	total += category02Total;
+	float category03Total = [SPCategory returnCategoryTotalDate:2 daysBack:days];
+	total += category03Total;
+	float category04Total = [SPCategory returnCategoryTotalDate:3 daysBack:days];
+	total += category04Total;
 	self.amountDisplayLabel.text = [NSString stringWithFormat:@"$%.2f", total];
 	
-	float category01Total = [SPCategory returnCategoryTotalDate:0 daysBack:days];
 	self.category01_title.text = [SPCategory returnCategoryName:0];
 	self.category01_title.textColor = [SPCategory returnCategoryColor:0];
 	self.category01_amount.text = [NSString stringWithFormat:@"$%.2f", category01Total];
@@ -102,7 +105,6 @@
 	self.category01_bar.trackTintColor = [self.category01_amount.textColor colorWithAlphaComponent:.2];
 	[self.category01_bar setProgress:category01Total/total animated:YES];
 	
-	float category02Total = [SPCategory returnCategoryTotalDate:1 daysBack:days];
 	self.category02_title.text = [SPCategory returnCategoryName:1];
 	self.category02_title.textColor = [SPCategory returnCategoryColor:1];
 	self.category02_amount.text = [NSString stringWithFormat:@"$%.2f", category02Total];
@@ -111,7 +113,6 @@
 	self.category02_bar.trackTintColor = [self.category02_amount.textColor colorWithAlphaComponent:.2];
 	[self.category02_bar setProgress:category02Total/total animated:YES];
 	
-	float category03Total = [SPCategory returnCategoryTotalDate:2 daysBack:days];
 	self.category03_title.text = [SPCategory returnCategoryName:2];
 	self.category03_title.textColor = [SPCategory returnCategoryColor:2];
 	self.category03_amount.text = [NSString stringWithFormat:@"$%.2f", category03Total];
@@ -120,7 +121,6 @@
 	self.category03_bar.trackTintColor = [self.category03_amount.textColor colorWithAlphaComponent:.2];
 	[self.category03_bar setProgress:category03Total/total animated:YES];
 	
-	float category04Total = [SPCategory returnCategoryTotalDate:3 daysBack:days];
 	self.category04_title.text = [SPCategory returnCategoryName:3];
 	self.category04_title.textColor = [SPCategory returnCategoryColor:3];
 	self.category04_amount.text = [NSString stringWithFormat:@"$%.2f", category04Total];

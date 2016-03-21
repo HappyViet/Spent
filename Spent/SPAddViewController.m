@@ -42,15 +42,11 @@
 	   // Sets amount spent to current amount text field
 	   [dict setObject:self.amount forKey:@"amountSpent"];
 	   
-	   // Temporary Date Setter
 	   // Sets date to current date
 	    if([[NSDate date] compare:self.date] == NSOrderedAscending){
 		    NSLog(@"Future date attempted to be placed.");
-		    [dict setObject:[NSDate date] forKey:@"dateSpent"];
 	    }
-	    else{
-		    [dict setObject:self.date forKey:@"dateSpent"];
-	    }
+		[dict setObject:self.date forKey:@"dateSpent"];
 	   
 	   // Temporary Category Setter
 	   // Sets category according to inserted text
