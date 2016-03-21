@@ -189,15 +189,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.60574205731896891" green="0.44147746956367828" blue="0.79620009816753923" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <outlet property="amountTextField" destination="yIR-F1-9Bx" id="Bqg-9k-59H"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dateCell" rowHeight="60" id="4Uz-ld-Jg5" customClass="SPDateViewCell">
-                                        <rect key="frame" x="0.0" y="148" width="600" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dateCell" rowHeight="120" id="4Uz-ld-Jg5" customClass="SPDateViewCell">
+                                        <rect key="frame" x="0.0" y="148" width="600" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Uz-ld-Jg5" id="XcQ-yK-nvr">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGR-Z7-p3q">
@@ -206,35 +203,34 @@
                                                     <color key="textColor" red="0.17254901959999999" green="0.90980392160000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Today's Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6KU-Vq-FDF">
-                                                    <rect key="frame" x="64" y="15" width="528" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="IHl-wF-oFs"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                <datePicker contentMode="scaleAspectFit" horizontalHuggingPriority="100" verticalHuggingPriority="100" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rRI-zU-4Zg">
+                                                    <rect key="frame" x="71" y="15" width="514" height="89"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="480247836.72705799">
+                                                        <!--2016-03-21 10:10:36 +0000-->
+                                                    </date>
+                                                    <date key="minimumDate" timeIntervalSinceReferenceDate="-31593600">
+                                                        <!--2000-01-01 08:00:00 +0000-->
+                                                    </date>
                                                     <connections>
-                                                        <action selector="dateEntryDidChange:" destination="db3-fG-IY7" eventType="editingChanged" id="IMp-X4-6Yr"/>
+                                                        <action selector="dateDidChange:" destination="db3-fG-IY7" eventType="valueChanged" id="isZ-3c-xPK"/>
                                                     </connections>
-                                                </textField>
+                                                </datePicker>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="6KU-Vq-FDF" firstAttribute="leading" secondItem="yGR-Z7-p3q" secondAttribute="trailing" constant="8" id="2ga-mu-YGD"/>
+                                                <constraint firstAttribute="bottom" secondItem="rRI-zU-4Zg" secondAttribute="bottom" constant="15" id="2wa-lo-ve4"/>
+                                                <constraint firstAttribute="trailing" secondItem="rRI-zU-4Zg" secondAttribute="trailing" constant="15" id="9fM-SX-bPg"/>
                                                 <constraint firstItem="yGR-Z7-p3q" firstAttribute="leading" secondItem="XcQ-yK-nvr" secondAttribute="leading" constant="15" id="TZo-zA-PNZ"/>
-                                                <constraint firstAttribute="trailing" secondItem="6KU-Vq-FDF" secondAttribute="trailing" constant="8" id="Uw7-bW-Yep"/>
-                                                <constraint firstItem="6KU-Vq-FDF" firstAttribute="top" secondItem="XcQ-yK-nvr" secondAttribute="top" constant="15" id="gh3-2z-gpc"/>
+                                                <constraint firstItem="rRI-zU-4Zg" firstAttribute="top" secondItem="XcQ-yK-nvr" secondAttribute="top" constant="15" id="XJG-Iz-CMc"/>
+                                                <constraint firstItem="rRI-zU-4Zg" firstAttribute="leading" secondItem="yGR-Z7-p3q" secondAttribute="trailing" constant="15" id="z1G-pF-mZa"/>
                                                 <constraint firstItem="yGR-Z7-p3q" firstAttribute="top" secondItem="XcQ-yK-nvr" secondAttribute="top" constant="19" id="zot-WW-ZzF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.34487818766061434" green="0.64636127889939055" blue="0.79620009816753923" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <outlet property="dateTextField" destination="6KU-Vq-FDF" id="pzW-IO-m06"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" rowHeight="60" id="kdF-wf-mRQ" customClass="SPCategoryTableViewCell">
-                                        <rect key="frame" x="0.0" y="208" width="600" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" rowHeight="60" id="kdF-wf-mRQ" customClass="SPCategoryTableViewCell">
+                                        <rect key="frame" x="0.0" y="268" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kdF-wf-mRQ" id="cVT-NX-TFZ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -273,13 +269,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.5308684658640237" green="0.76832829418249671" blue="0.79620009816753923" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <outlet property="dropDownButton" destination="BVv-LD-Uaz" id="mIV-im-yWY"/>
-                                            <outlet property="selectedCategory" destination="6sb-Qx-0Cd" id="lS2-4H-s1D"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" rowHeight="120" id="viZ-bd-CrX" customClass="SPCommentTableViewCell">
-                                        <rect key="frame" x="0.0" y="268" width="600" height="120"/>
+                                        <rect key="frame" x="0.0" y="328" width="600" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="viZ-bd-CrX" id="N3Q-ky-PbN">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
@@ -312,7 +304,7 @@
                                         <color key="backgroundColor" red="0.3149663689569499" green="0.79620009816753923" blue="0.75949939830240076" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addCell" rowHeight="60" id="P1F-uf-O7D" customClass="SPAddTableViewCell">
-                                        <rect key="frame" x="0.0" y="388" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="448" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P1F-uf-O7D" id="Gwc-gB-hdf">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -360,9 +352,6 @@
                             <constraint firstAttribute="bottom" secondItem="hrm-AY-7OJ" secondAttribute="bottom" id="v9N-iU-UwQ"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="addTableView" destination="hrm-AY-7OJ" id="e5h-4Z-2fZ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Oc-mR-6AT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

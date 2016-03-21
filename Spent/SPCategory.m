@@ -53,6 +53,13 @@
 
 + (double)returnTotal{
     NSArray *categories = [SPCategory MR_findAll];
+	
+	/*
+	NSString *input = @"Other";
+	SPCategory *pip = [SPCategory MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"name == %@", input]];
+	NSLog(@"More testing with predicates.\nName: %@", pip.name);
+	 */
+	
     double total = 0;
     for ( SPCategory *cat in categories){
 	   total += [[cat total]doubleValue];
@@ -91,6 +98,25 @@
 + (int) numberOfTotalCategories{
 	NSArray *categories = [SPCategory MR_findAll];
 	return (int)categories.count;
+}
+
++(double)returnCategoryTotalDate:(int)category daysBack:(int)days{
+	NSArray *categories = [SPCategory MR_findAll];
+	double totalForDate = 0;
+	
+	NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+	NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:[NSDate date]];
+	components.day -= days;
+	
+	NSArray *tran = [SPTransaction MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"category == %@", categories[category]]];
+	NSDate *date = [calendar dateFromComponents:components];
+	for ( SPTransaction *train in tran){
+		if([train.dateSpent compare:date] == NSOrderedDescending || [train.dateSpent compare:date] == NSOrderedSame){
+			totalForDate += [train.amountSpent doubleValue];
+		}
+	}
+	
+	return totalForDate;
 }
 
 @end

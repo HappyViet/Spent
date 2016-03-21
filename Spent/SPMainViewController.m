@@ -8,7 +8,9 @@
 
 #import "SPMainViewController.h"
 
-@interface SPMainViewController ()
+@interface SPMainViewController (){
+	NSArray *dateChoices;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *amountDisplayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *category01_title;
@@ -31,6 +33,7 @@
 	[super viewDidLoad];
 	self.view.backgroundColor = [UIColor clearColor];
 	[self updateDisplay];
+	dateChoices = [[NSArray alloc] initWithObjects:@3, @7, @14, @30, nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,6 +85,51 @@
     [self.category04_bar setProgress:category04Total/total animated:YES];
 }
 
+- (void) updateDisplayWithDaysBack:(int)days{
+	float total = 0;
+	float category01Total = [SPCategory returnCategoryTotalDate:0 daysBack:days];
+	total += category01Total;
+	float category02Total = [SPCategory returnCategoryTotalDate:1 daysBack:days];
+	total += category02Total;
+	float category03Total = [SPCategory returnCategoryTotalDate:2 daysBack:days];
+	total += category03Total;
+	float category04Total = [SPCategory returnCategoryTotalDate:3 daysBack:days];
+	total += category04Total;
+	self.amountDisplayLabel.text = [NSString stringWithFormat:@"$%.2f", total];
+	
+	self.category01_title.text = [SPCategory returnCategoryName:0];
+	self.category01_title.textColor = [SPCategory returnCategoryColor:0];
+	self.category01_amount.text = [NSString stringWithFormat:@"$%.2f", category01Total];
+	self.category01_amount.textColor = [self.category01_title.textColor colorWithAlphaComponent:.7];
+	self.category01_bar.progressTintColor = self.category01_title.textColor;
+	self.category01_bar.trackTintColor = [self.category01_amount.textColor colorWithAlphaComponent:.2];
+	[self.category01_bar setProgress:category01Total/total animated:YES];
+	
+	self.category02_title.text = [SPCategory returnCategoryName:1];
+	self.category02_title.textColor = [SPCategory returnCategoryColor:1];
+	self.category02_amount.text = [NSString stringWithFormat:@"$%.2f", category02Total];
+	self.category02_amount.textColor = [self.category02_title.textColor colorWithAlphaComponent:.7];
+	self.category02_bar.progressTintColor = self.category02_title.textColor;
+	self.category02_bar.trackTintColor = [self.category02_amount.textColor colorWithAlphaComponent:.2];
+	[self.category02_bar setProgress:category02Total/total animated:YES];
+	
+	self.category03_title.text = [SPCategory returnCategoryName:2];
+	self.category03_title.textColor = [SPCategory returnCategoryColor:2];
+	self.category03_amount.text = [NSString stringWithFormat:@"$%.2f", category03Total];
+	self.category03_amount.textColor = [self.category03_title.textColor colorWithAlphaComponent:.7];
+	self.category03_bar.progressTintColor = self.category03_title.textColor;
+	self.category03_bar.trackTintColor = [self.category03_amount.textColor colorWithAlphaComponent:.2];
+	[self.category03_bar setProgress:category03Total/total animated:YES];
+	
+	self.category04_title.text = [SPCategory returnCategoryName:3];
+	self.category04_title.textColor = [SPCategory returnCategoryColor:3];
+	self.category04_amount.text = [NSString stringWithFormat:@"$%.2f", category04Total];
+	self.category04_amount.textColor = [self.category04_title.textColor colorWithAlphaComponent:.7];
+	self.category04_bar.progressTintColor = self.category04_title.textColor;
+	self.category04_bar.trackTintColor = [self.category04_amount.textColor colorWithAlphaComponent:.2];
+	[self.category04_bar setProgress:category04Total/total animated:YES];
+}
+
 #pragma mark -
 #pragma mark - UIPickerView Delegate
 
@@ -90,14 +138,25 @@
 }
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-	return [SPCategory numberOfTotalCategories];
+	return [dateChoices count]+1;
 }
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-	return [SPCategory returnCategoryName:(int)row];
+	if((int)row == 0){
+		return [NSString stringWithFormat:@"ALL"];
+	}
+	else{
+		return [NSString stringWithFormat:@"%d days", [dateChoices[(int)row-1] intValue]];
+	}
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+	if((int)row == 0){
+		[self updateDisplay];
+	}
+	else{
+		[self updateDisplayWithDaysBack:[dateChoices[(int)row-1] intValue]];
+	}
 }
 
 /*
