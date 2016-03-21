@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SPMainPieViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@protocol MasterTransitionDelegate;
 
+@interface SPMainPieViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@property (weak, nonatomic) id <MasterTransitionDelegate> masterTransitionDelegate;
 - (void) updateDisplay;
 @end

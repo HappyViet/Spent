@@ -11,6 +11,7 @@
 @protocol MasterTransitionDelegate <NSObject>
 
 -(void)transitionToMaster:(UIViewController *)controller;
+-(void)transitionToCategory:(UIViewController *)controller indexNum:(int)index categoryName:(NSString *)nameCategory;
 @end
 
 @interface SPMasterViewController : UIViewController <MasterTransitionDelegate>

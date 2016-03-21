@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)returnCategoryName:(int)category;
 + (UIColor *)returnCategoryColor:(int)category;
 + (int)numberOfTotalCategories;
++ (double)returnCategoryTotalDate:(int)category daysBack:(int)days;
 
 @end
 

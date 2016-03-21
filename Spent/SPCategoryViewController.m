@@ -10,14 +10,18 @@
 #import "SPTransactionTableViewCell.h"
 
 @interface SPCategoryViewController (){
+	NSString *categoryName;
 }
-
+@property (nonatomic, strong) NSArray *transactions;
 @end
 
 @implementation SPCategoryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	categoryName = @"Other";
+	self.transactions = [SPTransaction MR_findAllSortedBy:categoryName ascending:NO];
     // Do any additional setup after loading the view.
 }
 
@@ -31,6 +35,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SPTransactionTableViewCell *cell = (SPTransactionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"transactionCell" forIndexPath:indexPath];
+	cell.transactionNameLabel.text = [[self.transactions objectAtIndex:(int)indexPath] name];
+	cell.amountLabel.text = [[[self.transactions objectAtIndex:(int)indexPath] amountSpent] stringValue];
     return cell;
 }
 
